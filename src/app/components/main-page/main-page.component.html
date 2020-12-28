@@ -3,7 +3,7 @@
     <mat-card class="header">
       <div class="add-new">
         <mat-form-field>
-          <input matInput placeholder="Add new list" #listInput />
+          <input (keydown.enter)="addNewList(listInput.value);listInput.value = ''" matInput placeholder="Add new list" #listInput />
         </mat-form-field>
         <button
           [disabled]="listInput.value == ''"

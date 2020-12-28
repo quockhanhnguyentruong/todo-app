@@ -54,15 +54,20 @@ export class TaskTodoDetailComponent implements OnInit {
   }
 
   addNewTask(taskName: string) {
-    this.tasksService.createTask(this.listId, taskName).subscribe(
-      (res) => {
-        this.tasksList.unshift(res);
-        this.openSnackBar('Create task successfully');
-      },
-      (err) => {
-        this.openSnackBar('Create task failed');
-      }
-    );
+    if(taskName.trim() === ''){
+      this.openSnackBar('Task name is empty');
+    }
+    if(taskName.trim() !== ''){
+      this.tasksService.createTask(this.listId, taskName).subscribe(
+        (res) => {
+          this.tasksList.unshift(res);
+          this.openSnackBar('Create task successfully');
+        },
+        (err) => {
+          this.openSnackBar('Create task failed');
+        }
+      );
+    }
   }
 
   editTask(task: Task) {
@@ -74,9 +79,9 @@ export class TaskTodoDetailComponent implements OnInit {
       if (result && result !== task.name) {
         this.tasksList.map((item) => {
           if (item.id === task.id) {
+            item.name = result;
             this.tasksService.modifyTask(this.listId, task.id, item).subscribe(
               () => {
-                item.name = result;
                 this.openSnackBar('Modify task successfully');
               },
               (err) => {
@@ -93,10 +98,22 @@ export class TaskTodoDetailComponent implements OnInit {
     task.completed = !task.completed;
     this.tasksService.modifyTask(this.listId, task.id, task).subscribe(
       () => {
-        this.openSnackBar('Modify task successfully');
+        this.openSnackBar('Task has been updated');
       },
       (err) => {
         this.openSnackBar('Modify task failed');
+      }
+    );
+  }
+
+  deleteTask(task: Task) {
+    this.tasksService.deleteTask(this.listId, task.id).subscribe(
+      () => {
+        this.tasksList = this.tasksList.filter((item) => item.id !== task.id);
+        this.openSnackBar('Task has been remove');
+      },
+      (err) => {
+        this.openSnackBar('Delete task failed');
       }
     );
   }
