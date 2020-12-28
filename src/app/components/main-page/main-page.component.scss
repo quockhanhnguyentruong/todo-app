@@ -1,0 +1,50 @@
+.main-page-container {
+  width: 55%;
+  margin: auto;
+  .container {
+    padding: 20px 0;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .add-new {
+      width: 100%;
+      mat-form-field {
+        width: 40%;
+        margin: 0 10px;
+      }
+    }
+  }
+
+  .todo-list {
+    margin: 20px 0;
+    mat-divider {
+      top: 0;
+      bottom: auto;
+    }
+    mat-icon {
+      color: grey;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+    .list-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .todo-list-item {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      span {
+        margin-right: 10px;
+      }
+    }
+    .button-item {
+      display: flex;
+    }
+  }
+}

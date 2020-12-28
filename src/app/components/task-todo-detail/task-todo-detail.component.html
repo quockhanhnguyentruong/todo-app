@@ -1,0 +1,77 @@
+<div class="main-page-container">
+  <div class="container">
+    <mat-card class="header">
+      <button
+        matTooltip="Back to list"
+        [matTooltipPosition]="'right'"
+        mat-icon-button
+        (click)="backToList()"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h2>{{ listTitle }}</h2>
+      <div class="log-out">
+        <button
+          matTooltip="Log Out"
+          [matTooltipPosition]="'right'"
+          (click)="logOut()"
+          mat-icon-button
+          color="primary"
+        >
+          <mat-icon>logout </mat-icon>
+        </button>
+      </div>
+    </mat-card>
+    <mat-card class="todo-task">
+      <h3>Todo tasks</h3>
+      <div class="add-new">
+        <mat-form-field>
+          <input matInput placeholder="Add new task" #taskInput />
+        </mat-form-field>
+        <button
+          [disabled]="taskInput.value == ''"
+          mat-raised-button
+          color="primary"
+          (click)="addNewTask(taskInput.value); taskInput.value = ''"
+        >
+          Add
+        </button>
+      </div>
+      <mat-list-item *ngFor="let task of tasksList">
+        <div class="task-item">
+          <div class="todo-task-item">
+            <mat-checkbox
+              [checked]="task.completed"
+              (change)="checkedDoneTask(task)"
+              color="primary"
+            >
+              <span [ngClass]="{ done: task.completed }">{{ task.name }}</span>
+              <span
+                >(Created At: {{ task.createdAt | date: "short":"UTC" }})</span
+              >
+            </mat-checkbox>
+          </div>
+          <div class="button-item">
+            <button
+              matTooltip="Edit task"
+              [matTooltipPosition]="'right'"
+              mat-icon-button
+              color="primary"
+              (click)="editTask(task)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              matTooltip="Delete task"
+              [matTooltipPosition]="'right'"
+              mat-icon-button
+              color="primary"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-card>
+  </div>
+</div>

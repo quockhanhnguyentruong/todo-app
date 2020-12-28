@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <h2>Edit Task</h2>
+  <mat-form-field>
+    <input
+      maxlength="80"
+      placeholder="Edit task name"
+      matInput
+      required
+      #editInput
+      [value]="data.name"
+    />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-raised-button
+    [mat-dialog-close]="editInput.value"
+    [disabled]="editInput.value === ''"
+  >
+    Save
+  </button>
+</div>

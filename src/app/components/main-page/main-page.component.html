@@ -1,0 +1,74 @@
+<div class="main-page-container">
+  <div class="container">
+    <mat-card class="header">
+      <div class="add-new">
+        <mat-form-field>
+          <input matInput placeholder="Add new list" #listInput />
+        </mat-form-field>
+        <button
+          [disabled]="listInput.value == ''"
+          mat-raised-button
+          color="primary"
+          (click)="addNewList(listInput.value); listInput.value = ''"
+        >
+          Add
+        </button>
+      </div>
+      <div class="log-out">
+        <button
+          matTooltip="Log Out"
+          [matTooltipPosition]="'right'"
+          (click)="logOut()"
+          mat-icon-button
+          color="primary"
+        >
+          <mat-icon>logout </mat-icon>
+        </button>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="listTodoItem.length > 0" class="todo-list">
+      <h2>Todo list</h2>
+      <mat-list-item *ngFor="let list of listTodoItem">
+        <div class="list-item">
+          <div class="todo-list-item">
+            <span>{{ list.name }}</span>
+            <span>(Task number: {{ list.tasks }})</span>
+          </div>
+          <div class="button-item">
+            <button
+              matTooltip="Edit list"
+              [matTooltipPosition]="'right'"
+              mat-icon-button
+              (click)="editList(list)"
+              color="primary"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <a
+              [routerLink]="['/task-detail', list.id]"
+              [queryParams]="{ list: list.name }"
+            >
+              <button
+                matTooltip="Tasks Detail"
+                [matTooltipPosition]="'right'"
+                mat-icon-button
+                color="primary"
+              >
+                <mat-icon>information</mat-icon>
+              </button>
+            </a>
+            <button
+              matTooltip="Delete list"
+              [matTooltipPosition]="'right'"
+              mat-icon-button
+              (click)="deleteList(list.id)"
+              color="primary"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-card>
+  </div>
+</div>

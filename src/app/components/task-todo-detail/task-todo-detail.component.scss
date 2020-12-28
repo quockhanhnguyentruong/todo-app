@@ -1,0 +1,55 @@
+.main-page-container {
+  width: 55%;
+  margin: auto;
+  .container {
+    padding: 20px 0;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .todo-task {
+    margin: 20px 0;
+    .add-new {
+      width: 100%;
+      mat-form-field {
+        width: 40%;
+        margin-right: 10px;
+      }
+    }
+    mat-divider {
+      top: 0;
+      bottom: auto;
+    }
+    mat-icon {
+      color: grey;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+    .task-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .todo-task-item {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      span {
+        margin-right: 10px;
+      }
+    }
+    .button-item {
+      display: flex;
+    }
+  }
+}
+
+.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
