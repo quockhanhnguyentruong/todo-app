@@ -54,20 +54,19 @@ export class TaskTodoDetailComponent implements OnInit {
   }
 
   addNewTask(taskName: string) {
-    if(taskName.trim() === ''){
+    if (taskName.trim() === '') {
       this.openSnackBar('Task name is empty');
+      return;
     }
-    if(taskName.trim() !== ''){
-      this.tasksService.createTask(this.listId, taskName).subscribe(
-        (res) => {
-          this.tasksList.unshift(res);
-          this.openSnackBar('Create task successfully');
-        },
-        (err) => {
-          this.openSnackBar('Create task failed');
-        }
-      );
-    }
+    this.tasksService.createTask(this.listId, taskName).subscribe(
+      (res) => {
+        this.tasksList.unshift(res);
+        this.openSnackBar('Create task successfully');
+      },
+      (err) => {
+        this.openSnackBar('Create task failed');
+      }
+    );
   }
 
   editTask(task: Task) {

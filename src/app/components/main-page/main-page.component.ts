@@ -35,21 +35,19 @@ export class MainPageComponent implements OnInit {
   }
 
   addNewList(name: string) {
-    if(name.trim() === ''){
-      this.openSnackBar('Name list is empty')
+    if (name.trim() === '') {
+      this.openSnackBar('Name list is empty');
+      return;
     }
-    if(name.trim() !== ''){
-      this.listsService.addNewList(name).subscribe(
-        (res) => {
-          this.listTodoItem.unshift(res);
-          this.openSnackBar('Add new list success');
-        },
-        (err) => {
-          this.openSnackBar('Add new list failed');
-        }
-      );
-    }
-
+    this.listsService.addNewList(name).subscribe(
+      (res) => {
+        this.listTodoItem.unshift(res);
+        this.openSnackBar('Add new list success');
+      },
+      (err) => {
+        this.openSnackBar('Add new list failed');
+      }
+    );
   }
 
   deleteList(id: number) {
