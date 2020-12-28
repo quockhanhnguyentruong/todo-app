@@ -97,7 +97,7 @@ export class TaskTodoDetailComponent implements OnInit {
     task.completed = !task.completed;
     this.tasksService.modifyTask(this.listId, task.id, task).subscribe(
       () => {
-        this.openSnackBar('Task has been updated');
+        this.openSnackBar('Task has been update');
       },
       (err) => {
         this.openSnackBar('Modify task failed');
