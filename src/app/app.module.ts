@@ -6,13 +6,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,12 +35,10 @@ import { EditTaskDialogComponent } from './components/task-todo-detail/edit-task
     MatButtonModule,
     MatDialogModule,
     FormsModule,
-    MatGridListModule,
     MatSnackBarModule,
     MatIconModule,
     MatCheckboxModule,
     MatTooltipModule,
-    MatExpansionModule,
     MatListModule,
   ],
   providers: [authInterceptorProviders],
