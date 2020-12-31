@@ -24,8 +24,8 @@ export class TaskTodoDetailComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {
-    this.router.queryParams.subscribe((router) => {
-      this.listTitle = router.list;
+    this.router.queryParams.subscribe((r) => {
+      this.listTitle = r.list;
     });
   }
 

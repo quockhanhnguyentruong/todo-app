@@ -23,7 +23,14 @@ import { TaskTodoDetailComponent } from './components/task-todo-detail/task-todo
 import { EditTaskDialogComponent } from './components/task-todo-detail/edit-task-dialog/edit-task-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MainPageComponent, EditListDialogComponent, TaskTodoDetailComponent, EditTaskDialogComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    MainPageComponent,
+    EditListDialogComponent,
+    TaskTodoDetailComponent,
+    EditTaskDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

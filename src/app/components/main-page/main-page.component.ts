@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { pipe } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { listTodo } from 'src/app/modal/todo.modal';
+import { ListTodo } from 'src/app/modal/todo.modal';
 import { AuthService } from 'src/app/services/auth.service';
 import { ListsService } from 'src/app/services/lists.service';
 import { EditListDialogComponent } from './edit-list-dialog/edit-list-dialog.component';
@@ -15,7 +14,7 @@ import { EditListDialogComponent } from './edit-list-dialog/edit-list-dialog.com
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  listTodoItem: listTodo[] = [];
+  listTodoItem: ListTodo[] = [];
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -62,7 +61,7 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  editList(item: listTodo) {
+  editList(item: ListTodo) {
     const dialogRef = this.dialog.open(EditListDialogComponent, {
       width: '250px',
       data: item,

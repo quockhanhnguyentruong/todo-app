@@ -1,4 +1,4 @@
-export interface listTodo {
+export interface ListTodo {
   id: number;
   name: string;
   tasks: number;

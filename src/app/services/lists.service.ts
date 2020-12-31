@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { listTodo } from '../modal/todo.modal';
+import { ListTodo } from '../modal/todo.modal';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -11,22 +11,22 @@ import { map } from 'rxjs/operators';
 export class ListsService {
   constructor(private http: HttpClient) {}
 
-  getLists(): Observable<listTodo[]> {
+  getLists(): Observable<ListTodo[]> {
     return this.http.get(environment.apiUrl + '/lists').pipe(
       map((rs) => {
         if (rs) {
-          return rs as listTodo[];
+          return rs as ListTodo[];
         }
         throwError('Error');
       })
     );
   }
 
-  addNewList(name: string): Observable<listTodo> {
+  addNewList(name: string): Observable<ListTodo> {
     return this.http.post(environment.apiUrl + '/lists', { name }).pipe(
       map((rs) => {
         if (rs) {
-          return rs as listTodo;
+          return rs as ListTodo;
         }
         throwError('Error');
       })
@@ -44,7 +44,7 @@ export class ListsService {
     );
   }
 
-  modifyList(listId: number, name: string): Observable<listTodo> {
+  modifyList(listId: number, name: string): Observable<ListTodo> {
     return this.http
       .put(environment.apiUrl + '/lists/' + listId, {
         name,
@@ -52,7 +52,7 @@ export class ListsService {
       .pipe(
         map((d) => {
           if (d) {
-            return d as listTodo;
+            return d as ListTodo;
           }
           throwError('Error');
         })
